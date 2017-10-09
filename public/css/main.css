@@ -1,0 +1,17 @@
+.video-tab-gone  , .video-tabs{
+    display: none;
+}
+.video-tab-on {
+    display: inline;
+}
+.speaker-tab-gone {
+    display: none;
+}
+.speaker-tab-on {
+    display: inline;
+}
+h4 {
+    color: white ;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
