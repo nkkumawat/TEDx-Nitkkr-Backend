@@ -19,6 +19,7 @@ var deletevideo = require('./routes/deletevideo');
 var videoinsert = require('./routes/videoinsert');
 var getothers = require('./routes/getothers');
 var getteam = require('./routes/getteam');
+var insertteam = require('./routes/insertteam');
 
 const config = require('./config');
 const con = mysql.createConnection(config.MYSQL);
@@ -58,6 +59,7 @@ app.use('/delete-video', deletevideo);
 app.use('/video-insert', videoinsert);
 app.use('/getothers', getothers);
 app.use('/getteam', getteam);
+app.use('/insert-team', insertteam);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

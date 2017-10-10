@@ -11,7 +11,6 @@ $(document).ready(function(){
     var speakers_list = $(".speakers-list");
     var video_list = $(".video-list");
     var team_list = $(".team-list");
-
     video_tab_open.click(function () {
         video_tab.removeClass("tab-gone");
         video_tab.addClass("tab-on");
@@ -36,13 +35,13 @@ $(document).ready(function(){
                 '            <div class="card">\n' +
                 '                <div class="card-image">\n' +
                 '                    <img width="400" height="400"  class="images-speakers" src="'+response[i].pic_url+'">' +
-                '                    <span class="card-title namespeaker" style="color: #26a69a;"><b>'+response[i].name+'</b></span>' +
+                '                    <span class="card-title namespeaker blue-grey " style="color: #fff; padding: -10px"><b>'+response[i].name+'</b></span>' +
                 '                </div>' +
                 '                <div class="card-content">' +
                 '                    <p>'+response[i].description.substr(0 , 40)+'</p>'+
                 '                </div>' +
                 '                <div class="card-action">' +
-                '                    <button class="waves-effect waves-light btn login-btn delete-speakers" name="'+response[i].name+'" >Delete</button>' +
+                '                    <button class="waves-effect waves-light btn  delete-speakers" name="'+response[i].name+'" >Delete</button>' +
                 '                </div>' +
                 '            </div>' +
                 '        </div>');
@@ -65,7 +64,7 @@ $(document).ready(function(){
                 '                    <span class="card-title">'+response[i].title+'</span>' +
                 '                </div>' +
                 '                <div class="card-action">' +
-                '                    <button class="waves-effect waves-light btn login-btn delete-video" name="'+response[i].title+'" >Delete</button>' +
+                '                    <button class="waves-effect waves-light btn delete-video" name="'+response[i].title+'" >Delete</button>' +
                 '                </div>' +
                 '            </div>' +
                 '        </div>');
@@ -79,8 +78,6 @@ $(document).ready(function(){
             });
         }
     });
-
-
     $.get("/getteam",{}, function(response){
         for(var i = 0 ; i < response.length ; i++) {
             team_list.append('<div class="col l3">' +
@@ -90,7 +87,7 @@ $(document).ready(function(){
                 '                    <span class="card-title">'+response[i].name+'</span>' +
                 '                </div>' +
                 '                <div class="card-action">' +
-                '                    <button class="waves-effect waves-light btn login-btn delete-team" name="'+response[i].name+'" >Delete</button>' +
+                '                    <button class="waves-effect waves-light btn  delete-team" name="'+response[i].name+'" >Delete</button>' +
                 '                </div>' +
                 '            </div>' +
                 '        </div>');
@@ -104,8 +101,6 @@ $(document).ready(function(){
             });
         }
     });
-
-
     $(".login-btn").click(function(){
         console.log(pass.val());
         var data = {
