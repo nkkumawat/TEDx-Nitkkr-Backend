@@ -16,6 +16,9 @@ var deletespeaker = require('./routes/deletespeaker');
 var speakerinsert = require('./routes/speakerinsert');
 var videos = require('./routes/videos');
 var deletevideo = require('./routes/deletevideo');
+var videoinsert = require('./routes/videoinsert');
+var getothers = require('./routes/getothers');
+var getteam = require('./routes/getteam');
 
 const config = require('./config');
 const con = mysql.createConnection(config.MYSQL);
@@ -52,6 +55,9 @@ app.use('/delete-speaker', deletespeaker);
 app.use('/speaker-insert', speakerinsert);
 app.use('/videos', videos);
 app.use('/delete-video', deletevideo);
+app.use('/video-insert', videoinsert);
+app.use('/getothers', getothers);
+app.use('/getteam', getteam);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

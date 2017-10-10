@@ -1,17 +1,40 @@
-.video-tab-gone  , .video-tabs{
+ .video-tabs , .team-tabs{
     display: none;
 }
-.video-tab-on {
+.tab-on {
     display: inline;
 }
-.speaker-tab-gone {
+.tab-gone {
     display: none;
 }
-.speaker-tab-on {
-    display: inline;
-}
+
 h4 {
     color: white ;
     text-align: center;
     font-family: "Roboto", sans-serif;
+}
+.icon-block {
+    padding: 0 15px;
+}
+.icon-block .material-icons {
+    font-size: inherit;
+}
+.namespeaker {
+    color :red;
+}
+#file {
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    /*opacity: 0;*/
+    display: inline-block;
+    width:110px;
+    background: #26a69a;
+}
+
+
+@media only screen and(max-width: 600px)  {
+    .brand-logo {
+        font-size: 2px;
+    }
 }
