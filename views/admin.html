@@ -13,9 +13,9 @@
     <div class="nav-wrapper container blue-grey">
         <!--<a id="logo-container" href="#" class="brand-logo">TEDxNITKurukshetra</a>-->
         <ul class="right hide-on-med-and-down">
-            <li><a class="speakers-tab-open">Speakers</a></li>
-            <li><a class="video-tab-open">Videos</a></li>
-            <li><a class="team-tab-open">Team</a></li>
+            <li><a class="speakers-tab-open" >Speakers</a></li>
+            <li><a class="video-tab-open" >Videos</a></li>
+            <li><a class="team-tab-open" >Team</a></li>
             <li><a href="#">{{username}}</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
@@ -59,9 +59,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12" >
-                                <input type="file" placeholder="File"  name="images" multiple  id="file"  class="validate waves-effect waves-light btn"/>
-                            </div>
+                            <!--<div class="input-field col s12" >-->
+                                <input type="file" placeholder="File"  name="images" multiple  id="file"  class=" inputfile validate waves-effect waves-light btn"/>
+                                <label for="file" class=" waves-effect waves-light btn">Choose a file</label>
+                            <!--</div>-->
                         </div>
                         <div class="card-action">
                             <button  class="waves-effect waves-light btn ">Save</button>
@@ -147,9 +148,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12" >
-                                    <input type="file" placeholder="File"  name="teammemberimage" multiple  id="teammember"  class="validate waves-effect waves-light btn"/>
-                                </div>
+                                <!--<div class="input-field col s12" >-->
+                                    <input type="file" placeholder="File"  name="teammemberimage" multiple  id="teammember"  class="validate inputfile waves-effect blue-grey waves-light btn"/>
+                                    <label for="teammember" class=" waves-effect waves-light btn">Choose a file</label>
+                                <!--</div>-->
                             </div>
                             <div class="card-action">
                                 <button  class="waves-effect waves-light btn  ">Save</button>

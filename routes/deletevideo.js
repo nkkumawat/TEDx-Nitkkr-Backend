@@ -17,7 +17,7 @@ router.post('/', function(req, res, next)  {
         console.log(videoTitle);
         var sql = "Delete from videos where title = '" + videoTitle + "'";
         con.query(sql, function (err, result, fields) {
-            res.redirect('/admin');
+            res.redirect('/admin?tab=video');
         });
     }
 });

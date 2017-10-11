@@ -32,10 +32,11 @@ router.post('/',  function(req, res, next) {
                 const name = sanitizeHtml(post.membername);
                 const position = sanitizeHtml(post.position);
                 const sociallink = sanitizeHtml(post.sociallink);
-                var sql = "INSERT INTO team(title, position, link, pic_url) " +
+                var sql = "INSERT INTO team(name, position, link, pic_url) " +
                     "values('" + name + "','" + position + "','" + sociallink + "','/images/team/" + name + ".jpg')";
                 con.query(sql, function (err, result, fields) {
-                    res.redirect('/admin');
+                    console.log(err);
+                    res.redirect('/admin?tab=team');
                 });
             }
         });

@@ -20,7 +20,7 @@ router.post('/',  function(req, res, next) {
             "values('" + title + "','" + description + "','" + url + "')";
         console.log(sql);
         con.query(sql, function (err, result, fields) {
-            res.redirect('/admin');
+            res.redirect('/admin?tab=video');
         });
     }
 });

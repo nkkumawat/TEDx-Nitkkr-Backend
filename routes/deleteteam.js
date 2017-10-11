@@ -13,11 +13,12 @@ router.post('/', function(req, res, next)  {
         res.redirect("http://tedxnitkurukshetra.com");
     }else {
         const post = req.body;
-        const speakerName = sanitizeHtml(post.speakerName);
-        var sql = "Delete from speaker where name = '" + speakerName + "'";
+        const memberName = sanitizeHtml(post.memberName);
+        var sql = "Delete from team where name = '" + memberName + "'";
         con.query(sql, function (err, result, fields) {
-            res.redirect('/admin?tab=speakers');
+            res.redirect('/admin?tab=team');
         });
+        console.log(sql);
     }
 });
 

@@ -36,7 +36,7 @@ router.post('/',  function(req, res, next) {
                 var sql = "INSERT INTO speaker(name, topic, description, pic_url) " +
                     "values('" + name + "','" + topic + "','" + description + "','/images/" + name + ".jpg')";
                 con.query(sql, function (err, result, fields) {
-                    res.redirect('/admin');
+                    res.redirect('/admin?tab=speakers');
                 });
             }
         });

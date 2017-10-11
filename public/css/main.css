@@ -32,6 +32,26 @@ h4 {
     background: #26a69a;
 }
 
+ .inputfile {
+     width: 0.1px;
+     height: 0.1px;
+     opacity: 0;
+     overflow: hidden;
+     position: absolute;
+     z-index: -1;
+ }
+ .inputfile + label {
+     color: white;
+     background-color: #26a69a;
+     display: inline-block;
+     cursor: pointer;
+ }
+ .bottom-border {
+     border-bottom: 4px solid  #26a69a;
+     box-sizing: inherit;
+ }
+
+
 
 @media only screen and(max-width: 600px)  {
     .brand-logo {
