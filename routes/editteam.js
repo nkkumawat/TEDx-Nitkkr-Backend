@@ -34,8 +34,9 @@ router.post('/',  function(req, res, next) {
                 const name = sanitizeHtml(post.membername);
                 const position = sanitizeHtml(post.position);
                 const sociallink = sanitizeHtml(post.sociallink);
-                var sql = "INSERT INTO team(name, position, link, pic_url) " +
-                    "values('" + name + "','" + position + "','" + sociallink + "','/images/team/" + filename+sanitizeHtml(req.body.membername) + ".jpg')";
+                const id = sanitizeHtml(post.id);
+                var sql = "UPDATE team set name= '" +name+"', position = '" +position+"',"+
+                    "link = '"+sociallink+"', pic_url='/images/team/"+filename+sanitizeHtml(req.body.membername)+".jpg' where id='"+id+"'";
                 con.query(sql, function (err, result, fields) {
                     console.log(err);
                     res.redirect('/admin?tab=team');

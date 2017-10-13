@@ -11,6 +11,9 @@ $(document).ready(function() {
     var speakers_list = $(".speakers-list");
     var video_list = $(".video-list");
     var team_list = $(".team-list");
+
+
+    speakers_tab_open.addClass("bottom-border");
     video_tab_open.click(function () {
         showVideo();
     });
@@ -22,6 +25,7 @@ $(document).ready(function() {
     });
 
     var showVideo = function showVideo() {
+             $('.button-collapse').sideNav('hide');
             video_tab_open.addClass("bottom-border");
             video_tab.removeClass("tab-gone");
             video_tab.addClass("tab-on");
@@ -31,6 +35,7 @@ $(document).ready(function() {
             team_tab_open.removeClass("bottom-border");
     };
     var showTeam = function showTeam() {
+            $('.button-collapse').sideNav('hide');
             team_tab.removeClass("tab-gone");
             team_tab.addClass("tab-on");
             team_tab_open.addClass("bottom-border");
@@ -40,6 +45,7 @@ $(document).ready(function() {
             video_tab_open.removeClass("bottom-border");
     };
     var showSpeakers = function showSpeakers() {
+           $('.button-collapse').sideNav('hide');
            speaker_tab.removeClass("tab-gone");
            speakers_tab_open.addClass("bottom-border");
            speaker_tab.addClass("tab-on");
@@ -70,33 +76,41 @@ $(document).ready(function() {
     }
     $.get("/speakers",{}, function(response){
         for(var i = 0 ; i < response.length ; i++) {
-            speakers_list.append(' <div class="col l3 ">\n' +
-                '            <div class="card">\n' +
-                '                <div class="card-image">\n' +
-                '                    <img width="400" height="400"  class="images-speakers" src="'+response[i].pic_url+'">' +
+
+            speakers_list.append(' ' +
+                '' +
+                '         <div class="col s12 m4 ">' +
+                '            <div class="card">' +
+                '                <div class="card-image">' +
+                '                    <img class="responsive-img" style="height: 300px" class="images-speakers" src="'+response[i].pic_url+'">' +
                 '                    <span class="card-title namespeaker blue-grey " style="color: #fff; padding: -10px"><b>'+response[i].name+'</b></span>' +
                 '                </div>' +
                 '                <div class="card-content">' +
-                '                    <p>'+response[i].description.substr(0 , 40)+'</p>'+
+                '                    <p>'+response[i].description.substr(0 , 20)+'</p>'+
                 '                </div>' +
                 '                <div class="card-action">' +
                 '                    <button class="waves-effect waves-light btn  delete-speakers" name="'+response[i].name+'" >Delete</button>' +
+                '                  <button class="waves-effect waves-light btn  edit-speakers" name="'+response[i].id+'" >Edit</button>' +
                 '                </div>' +
                 '            </div>' +
-                '        </div>');
-            $(".delete-speakers" ).click(function() {
-                var data =  {
-                    "speakerName" : this.name
-                };
-                $.post("/delete-speaker" , data ,function(response){
-                    window.location.href = '/admin?tab=speakers';
+                '        </div>' +
+                '   ');
+                $(".delete-speakers" ).click(function() {
+                    var data =  {
+                        "speakerName" : this.name
+                    };
+                    $.post("/delete-speaker" , data ,function(response){
+                        window.location.href = '/admin?tab=speakers';
+                    });
                 });
-            });
+                $(".edit-speakers" ).click(function() {
+                    window.location.href = '/edit?tab=speakers&id='+this.name;
+                });
         }
     });
     $.get("/videos",{}, function(response){
         for(var i = 0 ; i < response.length ; i++) {
-            video_list.append('<div class="col l3">' +
+            video_list.append('<div class="col s12 m4">' +
                 '            <div class="card">' +
                 '                <div class="card-image">' +
                 '                    <iframe  src="'+response[i].video_url +'" frameborder="0" allowfullscreen></iframe>' +
@@ -104,6 +118,7 @@ $(document).ready(function() {
                 '                </div>' +
                 '                <div class="card-action">' +
                 '                    <button class="waves-effect waves-light btn delete-video" name="'+response[i].title+'" >Delete</button>' +
+                '                     <button class="waves-effect waves-light btn edit-video" name="'+response[i].id+'" >Edit</button>' +
                 '                </div>' +
                 '            </div>' +
                 '        </div>');
@@ -115,18 +130,22 @@ $(document).ready(function() {
                     window.location.href = '/admin?tab=video';
                 });
             });
+            $(".edit-video" ).click(function() {
+                window.location.href = '/edit?tab=video&id='+this.name;
+            });
         }
     });
     $.get("/getteam",{}, function(response){
         for(var i = 0 ; i < response.length ; i++) {
-            team_list.append('<div class="col l3">' +
+            team_list.append('<div class="col s12 m4">' +
                 '            <div class="card">' +
                 '                <div class="card-image">' +
-                '                     <img   class="images-team" src="'+response[i].pic_url+'">' +
+                '                     <img   class="images-team" style="height: 300px" src="'+response[i].pic_url+'">' +
                 '                    <span class="card-title blue-grey">'+response[i].name+'</span>' +
                 '                </div>' +
                 '                <div class="card-action">' +
                 '                    <button class="waves-effect waves-light btn delete-team" name="'+response[i].name+'" >Delete</button>' +
+                '                    <button class="waves-effect waves-light btn edit-team" name="'+response[i].id+'" >Edit</button>' +
                 '                </div>' +
                 '            </div>' +
                 '        </div>');
@@ -137,6 +156,9 @@ $(document).ready(function() {
                 $.post("/delete-team" , data ,function(response){
                     window.location.href = '/admin?tab=team';
                 });
+            });
+            $(".edit-team" ).click(function() {
+                window.location.href = '/edit?tab=team&id='+this.name;
             });
         }
     });

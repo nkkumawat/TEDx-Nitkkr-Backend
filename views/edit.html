@@ -13,33 +13,29 @@
     <div class="nav-wrapper container blue-grey">
         <!--<a id="logo-container" href="#" class="brand-logo">TEDxNITKurukshetra</a>-->
         <ul class="right hide-on-med-and-down">
-            <li><a class="speakers-tab-open" >Speakers</a></li>
-            <li><a class="video-tab-open" >Videos</a></li>
-            <li><a class="team-tab-open" >Team</a></li>
-            <!--<li><a href="#">{{username}}</a></li>-->
+            <li><a href="#">{{username}}</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="speakers-tab-open">Speakers</a></li>
-            <li><a class="video-tab-open">Videos</a></li>
-            <li><a class="team-tab-open">Team</a></li>
-            <!--<li><a href="#">{{username}}</a></li>-->
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
     </div>
 </nav>
-
 
 <br><br><br>
 <div class="row speaker-tabs">
     <div class="col s2"></div>
     <div class="col s12 m8">
-        <div class="card blue-grey darken-1"><br><h4 >Insert Speaker</h4>
+        <div class="card blue-grey darken-1"><br><h4 >Edit Speaker</h4>
             <div class="card-content white-text">
                 <div class="row" id="form-data1">
-                    <form class="col s12" method="post" action="/speaker-insert" enctype="multipart/form-data">
+                    <form class="col s12" method="post" action="/speaker-edit" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="id-speaker" name="id" readonly hidden type="text" class="validate">
+                                <!--<label for="id-speaker">Id</label>-->
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="name" name="speakername"  type="text" class="validate">
@@ -60,8 +56,8 @@
                         </div>
                         <div class="row">
                             <!--<div class="input-field col s12" >-->
-                                <input type="file" placeholder="File"  name="images" multiple  id="file"  class=" inputfile validate waves-effect waves-light btn"/>
-                                <label for="file" class=" waves-effect waves-light btn">Choose a file</label>
+                            <input type="file" placeholder="File"  name="images" multiple  id="file"  class=" inputfile validate waves-effect waves-light btn"/>
+                            <label for="file" class=" waves-effect waves-light btn">Choose a file</label>
                             <!--</div>-->
                         </div>
                         <div class="card-action">
@@ -69,24 +65,28 @@
                         </div>
                     </form>
                 </div>
-                <div class="error"></div>
+                <div class="error">
+                    You have to reupload Picture
+                </div>
             </div>
         </div>
     </div>
     <div class="col s2"></div>
 </div>
-<div class="row speaker-tabs">
-    <div class="row speakers-list">
-    </div>
-</div>
 <div class="row video-tabs">
     <div class="row">
         <div class="col s2"></div>
         <div class="col s12 m8">
-            <div class="card blue-grey darken-1"><br><h4 >Insert Videos</h4>
+            <div class="card blue-grey darken-1"><br><h4 >Edit Videos</h4>
                 <div class="card-content white-text">
                     <div class="row" id="form-data">
-                        <form class="col s12"  action="/video-insert" method="post" >
+                        <form class="col s12"  action="/edit-video" method="post" >
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="id-video" name="id" hidden readonly type="text" class="validate">
+                                    <!--<label for="id-video">Id</label>-->
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="title" name="title"  type="text" class="validate">
@@ -118,22 +118,23 @@
     </div>
     <div class="col s2"></div>
 </div>
-<div class="row video-tabs center">
-    <div class="row video-list">
-    </div>
-</div>
-
 <div class="row team-tabs">
     <div class="row">
         <div class="col s2"></div>
         <div class="col s12 m8">
-            <div class="card blue-grey darken-1"><br><h4 >Insert Team Member</h4>
+            <div class="card blue-grey darken-1"><br><h4 >Edit Team Member</h4>
                 <div class="card-content white-text">
                     <div class="row" id="form-data2">
-                        <form class="col s12"  action="/insert-team" method="post" enctype="multipart/form-data">
+                        <form class="col s12"  action="/edit-team" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="nameofteam" name="membername"  type="text" class="validate">
+                                    <input id="id-team" hidden name="id" readonly type="text" class="validate">
+                                    <!--<label for="id-team">Id</label>-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="nameofteam" name="membername"   type="text" class="validate">
                                     <label for="nameofteam">Name</label>
                                 </div>
                             </div>
@@ -150,17 +151,17 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!--<div class="input-field col s12" >-->
-                                    <input type="file" placeholder="File"  name="teammemberimage" multiple  id="teammember"  class="validate inputfile waves-effect blue-grey waves-light btn"/>
-                                    <label for="teammember" class=" waves-effect waves-light btn">Choose a file</label>
-                                <!--</div>-->
+                                <input type="file" placeholder="File"  name="teammemberimage" multiple  id="teammember"  class="validate inputfile waves-effect blue-grey waves-light btn"/>
+                                <label for="teammember" class=" waves-effect waves-light btn">Choose a file</label>
                             </div>
                             <div class="card-action">
                                 <button  class="waves-effect waves-light btn  ">Save</button>
                             </div>
                         </form>
                     </div>
-                    <div class="error"></div>
+                    <div class="error">
+                        You have to reupload Picture
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,11 +173,9 @@
     </div>
 </div>
 
-<!--============================ Edit ===========================================-->
-
 <script type="text/javascript" src="js/jquery.min.js" ></script>
 <script type="text/javascript" src="js/materialize.js" ></script>
-<script type="text/javascript" src="js/main.js" ></script>
+<script type="text/javascript" src="js/edit.js" ></script>
 
 </body>
 </html>

@@ -1,0 +1,51 @@
+* {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#viewport {
+    position: relative;
+    margin: 0 auto;
+    width: 450px;
+    height: 400px;
+    -webkit-perspective: 50000;
+    -moz-perspective: 50000;
+    margin-top: 100px;
+}
+
+#viewport .qube {
+    float: left;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 25px;
+    -webkit-transform-origin: 50px 50px -50px;
+    -webkit-transition: -webkit-transform 700ms ease;
+    -webkit-transform: rotateY(0deg) rotateX(0);
+    -moz-transform-origin: 50px 50px -50px;
+    -moz-transition: -moz-transform 700ms ease;
+    -moz-transform: rotateY(0deg) rotateX(0);
+}
+
+#viewport .qube.ltor {
+    -webkit-transform: rotateY(180deg) rotateX(0);
+    -moz-transform: rotateY(180deg) rotateX(0);
+}
+
+#viewport .qube.ttob {
+    -webkit-transform: rotateY(180deg) rotateX(180deg);
+    -moz-transform: rotateY(180deg) rotateX(180deg);
+}
+
+#viewport .qube > * {
+    background: #00aeef;
+}
+
+#viewport .qube .back {
+    background: #fff;
+}
+
+#viewport .qube .back:after {
+    display: none;
+}

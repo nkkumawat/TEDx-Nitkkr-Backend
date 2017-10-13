@@ -1,4 +1,8 @@
- .video-tabs , .team-tabs{
+@font-face {
+    font-family: timeBurner;
+    src: url(timeburnernormal.ttf);
+}
+.video-tabs , .team-tabs{
     display: none;
 }
 .tab-on {
@@ -6,6 +10,14 @@
 }
 .tab-gone {
     display: none;
+}
+.gawdslogo {
+    font-family: timeBurner;
+    float: right;
+}
+.gawdslogo > a {
+    text-decoration: none;
+    font-size: 2rem;
 }
 
 h4 {

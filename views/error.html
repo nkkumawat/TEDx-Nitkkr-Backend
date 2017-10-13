@@ -1,6 +1,109 @@
-extends layout
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404 Page not Found</title>
+  <link rel="stylesheet" href="https://www.zachstronaut.com/lab/quintessential-cube/qube.css" type="text/css" />
+  <link rel="stylesheet" href="/css/error.css">
+</head>
+<body><br>
+<h1 style="text-align: center ; font-size: 5rem; color: #00aeef; font-family: sans-serif">404 Error</h1>
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+<div id="viewport">
+  <ul id="cube0" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube1" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube2" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube3" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube4" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube5" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube6" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube7" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+
+  <ul id="cube8" class="qube solid">
+    <li class="front"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="back"></li>
+  </ul>
+</div>
+<script src="js/jquery.min.js"></script>
+<script >
+
+    // Zachary Johnson
+    // https://www.zachstronaut.com/
+
+    $(function () {
+        var $qubes = $('.qube');
+
+        setInterval(function () {
+            $qubes.eq(Math.floor(Math.random() * $qubes.length)).toggleClass(Math.random() > 0.5 ? 'ltor' : 'ttob');
+        }, 600);
+    });
+</script>
+
+</body>
+</html>

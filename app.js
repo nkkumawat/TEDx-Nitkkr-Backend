@@ -21,6 +21,13 @@ var getothers = require('./routes/getothers');
 var getteam = require('./routes/getteam');
 var insertteam = require('./routes/insertteam');
 var deleteteam = require('./routes/deleteteam');
+var edit = require('./routes/edit');
+var editspeakers = require('./routes/editspeakers');
+var getspeakerbyid = require('./routes/getspeakerbyid');
+var getvideobyid = require('./routes/getvideobyid');
+var getteambyid = require('./routes/getteambyid');
+var editvideo = require('./routes/editvideo');
+var editteam = require('./routes/editteam');
 
 const config = require('./config');
 const con = mysql.createConnection(config.MYSQL);
@@ -62,6 +69,13 @@ app.use('/getothers', getothers);
 app.use('/getteam', getteam);
 app.use('/insert-team', insertteam);
 app.use('/delete-team', deleteteam);
+app.use('/edit', edit);
+app.use('/speaker-edit', editspeakers);
+app.use('/getspeakerbyid', getspeakerbyid);
+app.use('/getvideobyid', getvideobyid);
+app.use('/getteambyid', getteambyid);
+app.use('/edit-video', editvideo);
+app.use('/edit-team', editteam);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
