@@ -73,7 +73,10 @@ $(document).ready(function() {
             name_speaker.val(response[0].name);
             topic_speaker.val(response[0].topic);
             desc_speaker.val(response[0].description);
-            console.log(response.toString());
+
+            name_speaker.click();
+            topic_speaker.click();
+            desc_speaker.click();
         });
 
     }else if(tab === "team") {
@@ -83,7 +86,10 @@ $(document).ready(function() {
             name_team.val(response[0].name);
             position_team.val(response[0].position);
             social_team.val(response[0].link);
-            console.log(response.toString());
+
+            name_team.click();
+            position_team.click();
+            social_team.click();
         });
 
     }else if(tab === "video") {
@@ -93,7 +99,10 @@ $(document).ready(function() {
             title_video.val(response[0].title);
             desc_video.val(response[0].description);
             url_video.val(response[0].video_url);
-            console.log(response.toString());
+
+            title_video.click();
+            desc_video.click();
+            url_video.click();
         });
     }
 

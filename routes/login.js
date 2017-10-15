@@ -12,7 +12,7 @@ const con = mysql.createConnection(config.MYSQL);
 
 /* GET home page. */
 router.get('/', function(req, res, next)  {
-    req.session.username = "nkkumawat@nkkumawat.me";
+    // req.session.username = "nkkumawat@nkkumawat.me";
     if (!req.session.username) {
         res.render('login',{} );
     } else {

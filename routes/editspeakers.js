@@ -6,17 +6,17 @@ const router = express.Router();
 const sanitizeHtml = require('sanitize-html');
 const mysql = require('mysql');
 var multer  = require('multer');
-var randomstring = require("randomstring");
+const cryptoRandomString = require('crypto-random-string');
 
 const config = require('../config');
 const con = mysql.createConnection(config.MYSQL);
-var filename = randomstring.generate(10);
+var filename = cryptoRandomString(10);
 var storage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, "./public/images");
     },
     filename: function(req, file, callback) {
-        callback(null,   sanitizeHtml(req.body.speakername)+".jpg");
+        callback(null,   filename+sanitizeHtml(req.body.speakername)+".jpg");
     }
 });
 var upload = multer({
@@ -29,6 +29,7 @@ router.post('/',  function(req, res, next) {
     }else {
         upload(req, res, function (err) {
             if (err) {
+                console.log(err);
                 return res.end("Something went wrong!");
             } else {
                 const post = req.body;
@@ -36,7 +37,7 @@ router.post('/',  function(req, res, next) {
                 const topic = sanitizeHtml(post.topic);
                 const description = sanitizeHtml(post.description);
                 const id = sanitizeHtml(post.id);
-                var sql = "Update speaker set name='"+name+"', topic = '"+topic+"',description ='"+description+"', pic_url='/images/"+sanitizeHtml(req.body.speakername)+".jpg' where id  = '" + id + "'";
+                var sql = "Update speaker set name='"+name+"', topic = '"+topic+"',description ='"+description+"', pic_url='/images/"+filename+sanitizeHtml(post.speakername)+".jpg' where id  = '" + id + "'";
                 console.log(sql);
 
                 // var sql = "INSERT INTO speaker(name, topic, description, pic_url) " +

@@ -6,11 +6,11 @@ const router = express.Router();
 const sanitizeHtml = require('sanitize-html');
 const mysql = require('mysql');
 var multer  = require('multer');
-var randomstring = require("randomstring");
+const cryptoRandomString = require('crypto-random-string');
 
 const config = require('../config');
 const con = mysql.createConnection(config.MYSQL);
-var filename =randomstring.generate(10);
+var filename = cryptoRandomString(10);
 var storage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, "./public/images/team");
@@ -28,6 +28,7 @@ router.post('/',  function(req, res, next) {
     }else {
         upload(req, res, function (err) {
             if (err) {
+                console.log(err);
                 return res.end("Something went wrong!");
             } else {
                 const post = req.body;
@@ -35,7 +36,7 @@ router.post('/',  function(req, res, next) {
                 const position = sanitizeHtml(post.position);
                 const sociallink = sanitizeHtml(post.sociallink);
                 var sql = "INSERT INTO team(name, position, link, pic_url) " +
-                    "values('" + name + "','" + position + "','" + sociallink + "','/images/team/" + filename+sanitizeHtml(req.body.membername) + ".jpg')";
+                    "values('" + name + "','" + position + "','" + sociallink + "','/images/team/" + filename+sanitizeHtml(post.membername) + ".jpg')";
                 con.query(sql, function (err, result, fields) {
                     console.log(err);
                     res.redirect('/admin?tab=team');
