@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 const session = require('express-session');
 const mysql = require('mysql');
 var cons = require('consolidate');
+var cors = require('express-cors')
 
 var index = require('./routes/index');
 var login = require('./routes/login');
@@ -54,6 +55,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(sess));
+app.use(cors({
+    allowedOrigins: [
+        'http://www.tedxnitkurukshetra.com',
+        'http://www.tedxnitkurukshetra.com:8080',
+        'http://www.tedxnitkurukshetra.com:8000',
+        'http://localhost:8080',
+        'http://localhost',
+        'http://localhost:3000',
+        'http://localhost:3001',
+        'http://localhost:3002'
+    ]
+}))
 
 app.use('/', index);
 app.use('/login', login);

@@ -12,6 +12,7 @@
     "crypto-random-string": "^1.0.0",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-cors": "0.0.3",
     "express-fileupload": "^0.3.0",
     "express-session": "^1.15.5",
     "jade": "~1.11.0",
